@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Expense Tracker</h1>
+
+
+<div class="input-section">
+<input type="text" id="item" placeholder="Expense name" />
+<input type="number" id="amount" placeholder="Amount" />
+<button onclick="addExpense()">Add</button>
+</div>
+
+
+<h2>Expenses</h2>
+<ul id="expense-list"></ul>
+
+
+<h2>Total: <span id="total">0</span> EGP</h2>
+</div>
+
+
+<!-- Merged JavaScript -->
+<script>
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+
+function updateUI() {
+const list = document.getElementById("expense-list");
+const totalEl = document.getElementById("total");
+
+
+list.innerHTML = "";
+let total = 0;
+
+
+expenses.forEach((exp, index) => {
+total += Number(exp.amount);
+list.innerHTML += `
+<li>
+${exp.item} - ${exp.amount} EGP
+<span class="delete-btn" onclick="deleteExpense(${index})">✖</span>
+</li>
+`;
+});
+
+
+totalEl.textContent = total;
+localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+
+function addExpense() {
+const item = document.getElementById("item").value;
+const amount = document.getElementById("amount").value;
+
+
+if (item === "" || amount === "") return alert("Please fill all fields");
+
+
+expenses.push({ item, amount });
+updateUI();
+
+
+document.getElementById("item").value = "";
+document.getElementById("amount").value = "";
+}
+
+
+function deleteExpense(index) {
+expenses.splice(index, 1);
+updateUI();
+}
+
+
+updateUI();
+</script>
+</body>
+</html>
