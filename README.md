@@ -1,13 +1,22 @@
 # Expense Tracker — Single File Version
-A complete Expense Tracker project in **one HTML file**.
 
+A clean and simple Expense Tracker built in **one HTML file** using HTML, CSS, and JavaScript.
 
 ## Features
-- Add expenses
+- Add new expenses
 - Delete expenses
-- Total auto calculation
-- Saves data using LocalStorage
-
+- Auto total calculation
+- LocalStorage support
+- Works offline
 
 ## How to Run
-Just open `index.html` in any browser.
+1. Download `index.html`
+2. Open it in your browser
+
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+
+## Author
+Created by Mido
